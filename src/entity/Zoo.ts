@@ -3,11 +3,11 @@ import { BaseEntity, Entity, PrimaryGeneratedColumn, Column,UpdateDateColumn, Ma
 import { User } from "./User";
 
 @ObjectType()
-@Entity('donations')
+@Entity('zoos')
 export class Zoo extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn('uuid')
-    id: number
+    id: string
 
     @Field()
     @Column({nullable: false})
