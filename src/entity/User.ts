@@ -1,10 +1,10 @@
 import { Field, ID, ObjectType } from "type-graphql"
-import { Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn, BaseEntity } from "typeorm"
 import { Zoo } from "./Zoo"
 
 @ObjectType()
 @Entity('users')
-export class User {
+export class User extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn('uuid')
     id: string
@@ -24,10 +24,6 @@ export class User {
     @Field()
     @Column({type: 'uuid', nullable: true})
     zooId?: string
-
-    @Field()
-    @Column()
-    age: number
 
     @Field()
     @Column({ default: () => 'CURRENT_TIMESTAMP', nullable: false })
