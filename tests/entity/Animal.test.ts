@@ -30,8 +30,9 @@ describe('Animal entity', () => {
         animal.bio = 'Once killed a dude.'
         animal.zoo = zoo
 
-        animal.save()
         zoo.save()
+        animal.save()
+        console.log(zoo, animal)
 
         expect(animal.zooId).toEqual(zoo.id)
     })
