@@ -1,12 +1,13 @@
-import { Field, ID } from "type-graphql"
+import { Field, ID, ObjectType } from "type-graphql"
 import { Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn } from "typeorm"
 import { Zoo } from "./Zoo"
 
-@Entity()
+@ObjectType()
+@Entity('users')
 export class User {
     @Field(() => ID)
     @PrimaryGeneratedColumn('uuid')
-    id: number
+    id: string
 
     @Field()
     @Column({nullable: false})

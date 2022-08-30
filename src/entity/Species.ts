@@ -8,7 +8,7 @@ import { SpeciesGroup } from "./SpeciesGroup";
 export class Species extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn('uuid')
-    id: number
+    id: string
 
     @Field()
     @Column()

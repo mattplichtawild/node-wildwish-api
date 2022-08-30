@@ -7,7 +7,7 @@ import { Zoo } from "./Zoo"
 export class Animal extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn('uuid')
-    id: number
+    id: string
 
     @Field()
     @Column({type: 'uuid', nullable: true})

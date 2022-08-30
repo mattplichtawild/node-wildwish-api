@@ -8,7 +8,7 @@ import { Animal } from "./Animal";
 export class EnrichmentItem extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn('uuid')
-    id: number
+    id: string
 
     @Field()
     @Column()

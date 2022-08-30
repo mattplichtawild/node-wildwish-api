@@ -7,7 +7,7 @@ import { User } from "./User";
 export class Donation extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn('uuid')
-    id: number
+    id: string
 
     @Field()
     @Column({type: 'uuid', nullable: false})
