@@ -1,3 +1,4 @@
+import { toEditorSettings } from 'typescript'
 import { Animal } from '../../src/entity/Animal'
 import { Zoo } from '../../src/entity/Zoo'
 
@@ -9,10 +10,13 @@ describe('Animal entity', () => {
         animal.name = 'Shere Kahn'
         animal.species = 'Bengal Tiger'
         animal.bio = 'Actually the good guy.'
-
         await animal.save()
+        
+        const fetchedAnimal = await Animal.findOneByOrFail({id: animal.id})
+
         expect(animal.id).not.toBeUndefined()
         expect(typeof animal.id).toBe('string')
+        expect(fetchedAnimal.id).toEqual(animal.id)
     })
 
     it('can be saved with an associated zoo', async () => {
@@ -30,10 +34,15 @@ describe('Animal entity', () => {
         animal.bio = 'Once killed a dude.'
         animal.zoo = zoo
 
-        zoo.save()
-        animal.save()
-        console.log(zoo, animal)
-
+        await zoo.save()
+        await animal.save()
         expect(animal.zooId).toEqual(zoo.id)
+
+        const fetchedZoo = await Zoo.findOneByOrFail({id: zoo.id})
+        const fetchedAnimal = await Animal.findOneByOrFail({id: animal.id})
+
+        expect(fetchedZoo.id).toEqual(zoo.id)
+        expect(fetchedAnimal.id).toEqual(animal.id)
+        expect(fetchedAnimal.zooId).toEqual(fetchedZoo.id)
     })
 })
