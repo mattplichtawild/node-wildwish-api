@@ -1,15 +1,12 @@
-import { ObjectType, Field, ID, Int } from "type-graphql";
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn, ManyToOne, ManyToMany } from "typeorm";
-import { Animal } from "./Animal";
-import { EnrichmentItem } from "./EnrichmentItem";
-
+import { ObjectType, Field, ID } from "type-graphql";
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn } from "typeorm";
 
 @ObjectType()
-@Entity()
+@Entity('wishes')
 export class Wish extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn('uuid')
-    id: number
+    id: string
 
     @Field()
     @Column({type: 'uuid', nullable: false})
@@ -20,16 +17,8 @@ export class Wish extends BaseEntity {
     enrichmentItemId: string
 
     @Field()
-    @Column({nullable: false})
+    @Column({nullable: false, type: 'real'})
     fundAmount: number
-
-    @Field()
-    @ManyToOne(() => Animal, {nullable: false})
-    animal: Animal
-
-    @Field(() => EnrichmentItem)
-    @ManyToOne(() => EnrichmentItem, {nullable: false})
-    enrichmentItem: EnrichmentItem
 
     @Field()
     @Column({default: false, nullable: false})
