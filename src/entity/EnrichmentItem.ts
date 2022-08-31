@@ -1,29 +1,27 @@
-import { ObjectType, Field, ID, Int } from "type-graphql";
+import { ObjectType, Field, ID } from "type-graphql";
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn } from "typeorm";
-import { Animal } from "./Animal";
-
 
 @ObjectType()
-@Entity()
+@Entity('enrichment_items')
 export class EnrichmentItem extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn('uuid')
     id: string
 
     @Field()
-    @Column()
+    @Column({nullable: false})
     name: string
 
     @Field()
-    @Column()
+    @Column({nullable: false})
     description: string
 
     @Field()
-    @Column()
+    @Column({nullable: true})
     url: string
 
     @Field()
-    @Column()
+    @Column({nullable: true, type: 'real'})
     price: number
 
     @Field()
