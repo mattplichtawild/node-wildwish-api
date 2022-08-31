@@ -17,13 +17,8 @@ export class Donation extends BaseEntity {
     @Column({type: 'uuid', nullable: false})
     wishId: string
 
-    @Field(() => User)
-    @JoinColumn()
-    @ManyToOne(() => User)
-    user: User
-
-    @Field(() => Int)
-    @Column({nullable: false})
+    @Field()
+    @Column({nullable: false, type: 'real'})
     amount: number
 
     @Field()
